@@ -2,6 +2,7 @@ import * as React from 'react';
 import { StyleSheet, Pressable } from 'react-native';
 import { Text, View } from './Themed';
 import { Audio } from 'expo-av';
+import { Ionicons } from '@expo/vector-icons';
 
 // TODO: change fetching song parameter from urlID to text search results after confirming API endpoints are working
 export default function AudioButton ({ urlID }: { urlID: string }) {
@@ -23,15 +24,20 @@ export default function AudioButton ({ urlID }: { urlID: string }) {
   }
 
   return (
-    <View>
-      <Pressable onPress={playSound}><Text>Play</Text></Pressable>
-      <Pressable onPress={pauseSound}><Text>Pause</Text></Pressable>
+    <View style={styles.container}>
+      <Pressable onPress={playSound}>
+        <Ionicons name='play' size={24} color='white' />
+      </Pressable>
+      <Pressable onPress={pauseSound}>
+        <Ionicons name='pause' size={24} color='white' />
+      </Pressable>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
+    flexDirection: "row",
     alignItems: 'center',
     justifyContent: 'center',
   },
